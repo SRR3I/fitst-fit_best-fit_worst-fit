@@ -7,15 +7,17 @@ def first_fit(partitions, processes):
         for j in range(len(partitions)):
             if i < len(processes):
                 if processes[i] <= partitions[j]:
-                    print(f"{processes[i]} is put in {partitions[j]} partition")
+                    print(f"{processes[i]}K is put in {
+                          partitions[j]}K partition")
                     partitions[j] -= processes[i]
                     complete[i] = False
                     i += 1
                 else:
                     MustWait = processes[i]
         if all(complete):
-            print(MustWait, 'must wait')
+            print(f'{MustWait}K must wait')
             break
+
 
 def best_fit(partitions, processes):
     print('\nBest-fit')
@@ -26,14 +28,15 @@ def best_fit(partitions, processes):
         for j in range(len(partitions)):
             if i < len(processes):
                 if processes[i] <= partitions[j]:
-                    print(f"{processes[i]} is put in {partitions[j]} partition")
+                    print(f"{processes[i]}K is put in {
+                          partitions[j]}K partition")
                     partitions[j] -= processes[i]
                     complete[i] = False
                     break
                 else:
                     MustWait = processes[i]
-        if MustWait != None and all(complete):
-            print(MustWait, 'must wait')
+        if all(complete):
+            print(f'{MustWait}K must wait')
 
 
 def worst_fit(partitions, processes):
@@ -46,26 +49,19 @@ def worst_fit(partitions, processes):
         for j in range(len(partitions)):
             if i < len(processes):
                 if processes[i] <= partitions[j]:
-                    print(f"{processes[i]} is put in {partitions[j]} partition")
+                    print(f"{processes[i]}K is put in {
+                          partitions[j]}K partition")
                     partitions[j] -= processes[i]
                     complete[i] = False
                     break
                 else:
                     MustWait = processes[i]
-        if MustWait != None and all(complete):
-            print(MustWait, 'must wait')
+        if all(complete):
+            print(f'{MustWait}K must wait')
 
 
-partition = [100, 500,  200, 300, 600]
-process = [212, 417, 112, 426]
-first_fit(partition, process)
+first_fit([100, 500,  200, 300, 600], [212, 417, 112, 426])
 
+best_fit([100, 500,  200, 300, 600], [212, 417, 112, 426])
 
-partition = [100, 500,  200, 300, 600]
-process = [212, 417, 112, 426]
-best_fit(partition, process)
-
-
-partition = [100, 500,  200, 300, 600]
-process = [212, 417, 112, 426]
-worst_fit(partition, process)
+worst_fit([100, 500,  200, 300, 600], [212, 417, 112, 426])
