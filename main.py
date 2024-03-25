@@ -16,7 +16,7 @@ def first_fit(partitions, processes):
                     MustWait = processes[i]
         if all(complete):
             print(f'{MustWait}K must wait')
-            break
+            i += 1
 
 
 def best_fit(partitions, processes):
